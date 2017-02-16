@@ -1,0 +1,296 @@
+
+body {
+  font: 400 3.2vw Lato, sans-serif;
+  line-height: 1.8;
+  color: #818181;
+}
+
+
+/* Jumbotron */
+
+.jumbotron {
+    font-family: Montserrat, sans-serif;
+    background-color: #f78c58;
+    color: #fff;
+    padding-top: 300px;
+    padding-bottom: 300px;
+    height: 100vh;
+    position: relative;
+}
+
+.jumbotron .container {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  font-size: 24px;
+}
+
+.jumbotron a, .jumbotron a:hover, .jumbotron a:focus, .jumbotron:active:focus {
+  color: white;
+  outline: none;
+  border: none;
+}
+
+/* Bounce effect */
+.bounce {
+	-webkit-animation-name: bounce;
+	-moz-animation-name: bounce;
+	-o-animation-name: bounce;
+	animation-name: bounce;
+}
+.animated{-webkit-animation-fill-mode:both;
+-moz-animation-fill-mode:both;
+-ms-animation-fill-mode:both;
+-o-animation-fill-mode:both;
+
+            animation-iteration-count: infinite;
+       -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+
+animation-fill-mode:both;
+-webkit-animation-duration:2s;
+-moz-animation-duration:2s;
+-ms-animation-duration:2s;
+-o-animation-duration:2s;
+animation-duration:2s;
+}
+
+
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}	40% {-webkit-transform: translateY(-30px);}
+	60% {-webkit-transform: translateY(-15px);}
+}
+
+@-moz-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+	40% {-moz-transform: translateY(-30px);}
+	60% {-moz-transform: translateY(-15px);}
+}
+
+@-o-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+	40% {-o-transform: translateY(-30px);}
+	60% {-o-transform: translateY(-15px);}
+}
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
+
+
+/* Services container styling */
+.logo {
+  font-size: 200px;
+}
+@media screen and (max-width: 768px) {
+  .col-sm-4 {
+    text-align: center;
+    margin: 25px 0;
+  }
+}
+
+/*
+.services {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+}
+*/
+
+.row {
+  padding-top: 100px;
+}
+
+
+ /* Navbar styling */
+
+.navbar {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0;
+    background-color: #f78c58;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    width: 100vw;
+}
+
+.navbar .container {
+  width: 90vw;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+/* Contact */
+
+#contact {
+  padding-top: 10vh;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 90vh;
+}
+
+#contact-note {
+  text-align: center;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+textarea.form-control {
+  height: 30vh;
+}
+
+
+
+/* Styling icons for services */
+
+.logo-small {
+    color: #f78c58;
+    font-size: 50px;
+}
+
+.logo {
+    color: #f78c58;
+    font-size: 100px;
+    padding-top: 30px;
+}
+
+/* Button styling */
+
+.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active:focus {
+  background-color: white;
+  outline: none;
+  border: none;
+}
+
+
+#about-expand, #tutor-expand {
+  font-size: 30px;
+}
+
+/* Collapse styling */
+
+
+#collapse-row {
+  padding-top: 10px;
+}
+
+/* Footer */
+
+footer .glyphicon {
+  font-size: 20px;
+  margin-bottom: 50px;
+  color: #f4511e;
+}
+
+
+/* Custom screen-specific sizing */
+
+@media (min-width:576px) {
+  body{
+    font-size: 18px;
+  }
+
+  #services{
+    padding: 10px;
+  }
+
+  #contact{
+    padding: 10px 30px 10px 30px;
+  }
+
+  #about, #tutors {
+    font-size: 14px;
+    padding-left: 20px;
+  }
+
+  ul {
+    font-size: 14px;
+  }
+}
+
+@media (min-width:768px) {
+  body{
+    font-size: 24px;
+  }
+
+  #services{
+    padding: 30px;
+  }
+
+  #contact{
+    padding: 20px 50px 20px 50px;
+  }
+
+  #about, #tutors {
+    font-size: 16px;
+    padding-left: 30px;
+  }
+
+  ul {
+    font-size: 16px;
+  }
+}
+
+@media (min-width:992px) {
+  body{
+    font-size: 30px;
+  }
+
+  #services{
+    padding-left padding-right: 50px;
+  }
+
+  #contact{
+    padding: 25px 100px 25px 100px;
+  }
+
+  #about, #tutors {
+    font-size: 16px;
+    padding-left: 40px;
+  }
+
+  ul {
+    font-size: 16px;
+  }
+
+}
+
+@media (min-width:1200px) {
+  body{
+    font-size: 30px;
+  }
+
+  #services{
+    padding: 100px;
+  }
+
+  #contact{
+    padding: 50px 200px 50px 200px;
+  }
+
+
+  #about, #tutors {
+    font-size: 18px;
+    padding-left: 50px;
+  }
+
+  ul {
+    font-size: 18px;
+  }
+}
