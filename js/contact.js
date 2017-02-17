@@ -1,28 +1,15 @@
-$(function () {
+$(function() {
+  // Get form
+  var form = $('#ajax-contact');
 
-    $('#contact-form').validator();
+  //Get messages div
+  var formMessages = $('#form-messages');
 
-    $('#contact-form').on('submit', function (e) {
-        if (!e.isDefaultPrevented()) {
-            var url = "contact.php";
+  //Set up an event listener for the contact form.
+  $(form).submit(function(event) {
+    // Stop the browser from submitting the form.
+    event.preventDefault();
 
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $(this).serialize(),
-                success: function (data)
-                {
-                    var messageAlert = 'alert-' + data.type;
-                    var messageText = data.message;
-
-                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    if (messageAlert && messageText) {
-                        $('#contact-form').find('.messages').html(alertBox);
-                        $('#contact-form')[0].reset();
-                    }
-                }
-            });
-            return false;
-        }
-    })
-});
+    
+  })
+})

@@ -12,7 +12,7 @@ body {
     font-family: Montserrat, sans-serif;
     background-color: #f78c58;
     color: #fff;
-    padding-top: 300px;
+    padding-top: 30vh;
     padding-bottom: 300px;
     height: 100vh;
     position: relative;
@@ -192,10 +192,11 @@ textarea.form-control {
 
 /* Footer */
 
-footer .glyphicon {
+footer .glyphicon{
   font-size: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 10vh;
   color: #f4511e;
+  text-align: center;
 }
 
 

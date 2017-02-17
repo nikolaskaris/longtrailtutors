@@ -9,7 +9,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js/jquery.js"></script>
-  <script src="validator.js"></script>
   <script src="js/contact.js"></script>
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -154,8 +153,8 @@
 
 
   <!-- Contact Form -->
-
-  <form id="contact-form" method="post" action="contact.php" role="form">
+  <div id="form-messages"></div>
+  <form id="ajax-contact" method="post" action="contact.php" role="form">
 
     <div class="messages"></div>
     <div class="controls"></div>
@@ -163,22 +162,19 @@
   <h1 class="text-center">CONTACT</h1>
   <div class="row">
     <div class="col-sm-5 text-left">
-      <h3>If you wish to set up a consultation or ask about employment opportunities,
-      please fill out the form to the right.</h3>
+      If you wish to set up a consultation or ask about employment opportunities,
+      please fill out the form to the right.
     </div>
     <div class="col-sm-7">
       <div class="row" style="padding-top: 0">
         <div class="col-sm-6 form-group">
           <input class="form-control" id="name" name="name" placeholder="Name" type="text" required="required">
-          <div class="help-block with-errors"></div>
         </div>
         <div class="col-sm-6 form-group">
           <input class="form-control" id="email" name="email" placeholder="Email" type="email" required="required">
-          <div class="help-block with-errors"></div>
         </div>
       </div>
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" required="required"></textarea><br>
-      <div class="help-block with-errors"></div>
       <div class="row" style="padding: 0">
         <div class="col-sm-12 form-group">
           <button class="btn btn-default pull-right" type="submit" id="send-button">Send</button>
@@ -190,7 +186,7 @@
   </form>
 
   <!-- Footer -->
-  <footer class="container-fluid text-center">
+  <footer class="container text-center">
     <a href="#myPage" title="To Top">
       <span class="glyphicon glyphicon-chevron-up animated bounce"></span>
     </a>
