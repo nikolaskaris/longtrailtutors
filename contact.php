@@ -1,48 +1,51 @@
 <?php
 
-// configure
-$from = 'nik@longtrailtutors.com';
-$sendTo = 'nik@longtrailtutors.com';
-$subject = 'New message from contact form';
-$fields = array('name' => 'Name', 'email' => 'Email', 'comments' => 'Message'); // array variable name => Text to appear in the email
-$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
-$errorMessage = 'There was an error while submitting the form. Please try again later';
+    // Only process POST reqeusts.
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the form fields and remove whitespace.
+        $name = strip_tags(trim($_POST["name"]));
+				$name = str_replace(array("\r","\n"),array(" "," "),$name);
+        $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+        $comments = trim($_POST["comments"]);
 
-// let's do the sending
-
-try
-{
-    $emailText = "You have new message from contact form\n=============================\n";
-
-    foreach ($_POST as $key => $value) {
-
-        if (isset($fields[$key])) {
-            $emailText .= "$fields[$key]: $value\n";
+        // Check that data was sent to the mailer.
+        if ( empty($name) OR empty($comments) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Set a 400 (bad request) response code and exit.
+            http_response_code(400);
+            echo "Oops! There was a problem with your submission. Please complete the form and try again.";
+            exit;
         }
+
+        // Set the recipient email address.
+        // FIXME: Update this to your desired email address.
+        $recipient = "nik@longtrailtutors.com";
+
+        // Set the email subject.
+        $subject = "New contact from $name";
+
+        // Build the email content.
+        $email_content = "Name: $name\n";
+        $email_content .= "Email: $email\n\n";
+        $email_content .= "Message:\n$comments\n";
+
+        // Build the email headers.
+        $email_headers = "From: $name <$email>";
+
+        // Send the email.
+        if (mail($recipient, $subject, $email_content, $email_headers)) {
+            // Set a 200 (okay) response code.
+            http_response_code(200);
+            echo "Thank You! Your message has been sent.";
+        } else {
+            // Set a 500 (internal server error) response code.
+            http_response_code(500);
+            echo "Oops! Something went wrong and we couldn't send your message.";
+        }
+
+    } else {
+        // Not a POST request, set a 403 (forbidden) response code.
+        http_response_code(403);
+        echo "There was a problem with your submission, please try again.";
     }
 
-    $headers = array('Content-Type: text/html; charset="UTF-8";',
-        'From: ' . $from,
-        'Reply-To: ' . $from,
-        'Return-Path: ' . $from,
-    );
-
-    mail($sendTo, $subject, $emailText, implode("\n", $headers));
-
-    $responseArray = array('type' => 'success', 'message' => $okMessage);
-}
-catch (\Exception $e)
-{
-    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-}
-
-if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $encoded = json_encode($responseArray);
-
-    header('Content-Type: application/json');
-
-    echo $encoded;
-}
-else {
-    echo $responseArray['message'];
-}
+?>
