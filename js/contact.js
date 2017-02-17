@@ -1,50 +1,27 @@
-$(function() {
-  // Get form
-  var form = $('#ajax-contact');
-
-  //Get messages div
-  var formMessages = $('#form-messages');
-
-  //Set up an event listener for the contact form.
-  $(form).submit(function(event) {
-    // Stop the browser from submitting the form.
+$("#ajax-contact").submit(function(event){
+    // cancels the form submission
     event.preventDefault();
+    submitForm();
+});
 
-    // Serialize the form data.
-    var formData = $(form).serialize();
+function submitForm(){
 
-    //Submit the form using ajax
-    .ajax({
-      type: 'POST',
-      url: $(form).attr('action'),
-      data: formData
-    })
-    .done(function(response) {
-      // Make sure that the formMessages div has the 'success' class
-      $(formMessages).removeClass('error');
-      $(formMessages).addClass('success');
+  //Initiate variables with form content
+  var name = $('#name').val();
+  var email = $('#email').val();
+  var message = $('#message').val();
 
-      //Set the message text
-      $(formMessages).text(response);
-
-
-      //Clear the form.
-      $('#name').val('');
-      $('#email').val('');
-      $('#comments').val('');
-    })
-
-    .fail(function(data) {
-      // Make sure that the formMessages div has the 'error' class
-      $(formMessages).removeClass('success');
-      $(formMessages).addClass('error');
-
-      // Set the messages text.
-      if (data.responseText !== '') {
-        $(formMessages).text(data.responseText);
-      } else {
-        $(formMessages).text('Oops! An error occured and your message could not be sent.');
+  $.ajax({
+    type: "POST",
+    url: "php/contact.php",
+    data: "name=" + name + "&email=" + email + "&message" + message,
+    success: function(text){
+      if (text == "success"){
+        formSuccess();
       }
-    });
-  })
-})
+    }
+  });
+}
+function formSuccess(){
+  $( "#msgSubmit" ).removeClass( "hidden" );
+}
